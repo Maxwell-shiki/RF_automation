@@ -58,4 +58,9 @@
 2023.10.17
 ------
 - 部署项目到了github, 这里有一些使用的[注意事项](https://blog.csdn.net/qq_44441669/article/details/103539420), git指令的cheat sheet放桌面上了  
-- 想了想还是先确定代码能跑通，模块化的东西回家再搞吧
+- Multimeter 3458A基本写好了，也附了README。以后需要用啥功能再补，应该很快的
+- 开始看AWG5204, 示波器为 MSO64B
+  - [SourceXpress](https://www.youtube.com/watch?v=d9Lr_3xziB4), AWG机子上的软件的电脑版
+
+- 看 Ceyear 1465L信号发生器。群里有文档，回去看。
+
