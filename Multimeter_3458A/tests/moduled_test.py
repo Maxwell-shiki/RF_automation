@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../')
 import multimeter_3458A
 
 def main():
