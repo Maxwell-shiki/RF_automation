@@ -4,8 +4,8 @@
 - 配置环境：anaconda3(conda 4.12.0), python 3.9.12
 - tools: Everything, Qttabbar
 - VScode Extension: GlassIt, Bookmarks, indent-rainbow, Markdown all in one, Material Icon Theme, One Monkai Theme, Python, Pylance, Github Copilot, Tabout  
-<br>  
-- 根据《用户指南》学习操作
+
+- 根据《用户指南》学习操作  
 - 接口连接P33  
   - 安装 [Key IO Libraries Suite](https://www.keysight.com/us/en/lib/software-detail/computer-software/io-libraries-suite-downloads-2175637.html?jmpid=zzfindiolib)
   - 运行 Keysight Connection Expert 2023
