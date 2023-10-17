@@ -3,7 +3,6 @@ import re
 import time
 import numpy as np
 
-
 def main():
     rm = visa.ResourceManager()
 
@@ -22,9 +21,8 @@ def main():
     ID_msg = scope.query_ascii_values('ID?', converter='s', separator='\r\n')
     print("Connected to:", ID_msg[0], "now")
 
-
-
-    # # scope.write("TEST")
+    scope.write('FUNC DCV')
+    scope.write('OHM 1')
 
     # # print("Start to ")
     # scope.write("FUNC OHM")   
@@ -32,10 +30,15 @@ def main():
     # data = scope.query('READ?')
     # print(data)
 
-    err = scope.query_ascii_values('ERR?', converter='s', separator='\r\n')
+    # print("\nTest and check for errors...")
+    # scope.write("TEST")
+    # err = scope.query_ascii_values('ERR?', converter='s', separator='\r\n')
+    # if err[0] != '0':
+    #     print("  Error: ", err)
+    # else:
+    #     print("  No error.")
 
-    # err = scope.query('ERR?')
-    print(err)
+    print('\nProgram complete.\n')
 
 if __name__ == "__main__":
     main()
