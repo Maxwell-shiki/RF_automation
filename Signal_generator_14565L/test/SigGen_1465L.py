@@ -11,7 +11,10 @@ class Demo():
     def open(self):
         self.inst = self.rm.open_resource(self.addr)
         self.inst.read_termination = '\n'
+        self.inst.write('*CLS\n')
+
         # self.inst.write('*RST\n')
+        # 好像每次写复位*RST后面就写不进去了
     
     def close(self):
         if self.inst is not None:
@@ -39,10 +42,10 @@ class Demo():
 
     def get_freq(self):
         freq = self.inst.query('FREQ?')
-        # step = self.inst.query('FREQ:STEP?')
+        step = self.inst.query('FREQ:STEP?')
         # offset = self.inst.query('FREQ:OFFS?')
         print('频率为:     \t', freq, ' Hz')
-        # print('频率步进为: \t', step, ' Hz')
+        print('频率步进为: \t', step, ' Hz')
         # print('频率偏移为: \t', offset, ' Hz')
         print()
     
@@ -55,22 +58,21 @@ class Demo():
         # print('功率参考为: \t', ref, ' dBm')
         print()
 
-
-
 if __name__ == "__main__":
-    de = Demo(19)
+    # 填写GPIB地址
+    gpib = 19
+    de = Demo(gpib)
     de.open()
 
-    de.set_freq('300MHz')
-    # de.set_freq('300MHz', '0MHz')
+    de.set_freq('128MHz')
+    # de.set_freq('300MHz', '5MHz')
     # de.set_freq('500MHz', '10MHz', '0GHz', None, '5')
 
-    de.set_power('20dBm')
+    de.set_power('-10dBm')
 
-    
 
-    # de.get_freq()
-    # de.get_power()
+    de.get_freq()
+    de.get_power()
 
 
     de.close()
