@@ -22,7 +22,9 @@ def main():
     print("Connected to:", ID_msg[0], "now")
 
     scope.write('FUNC DCV')
-    scope.write('OHM 1')
+    scope.write('DCV 1')
+
+    scope.close()
 
     # # print("Start to ")
     # scope.write("FUNC OHM")   
