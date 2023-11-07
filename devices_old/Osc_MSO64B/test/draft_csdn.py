@@ -103,7 +103,7 @@ class Tektronix_DPO:
             print("look for plot window...")
             plt.savefig('test.png')     #save test picture
             plt.show()
-               
+
         def close(self):
             self.inst.close()
             self.rm.close()
