@@ -11,7 +11,7 @@ class Multimeter_3458A:
         self.scope.write('END ON')
 
         ID_msg = self.scope.query_ascii_values('ID?', converter='s', separator='\r\n')
-        print("\n  Connected to Multimeter ", ID_msg[0])
+        print("\n  Connected to Multimeter: ", ID_msg[0])
     
     def set_mode(self, set_mode):
         self.scope.write("FUNC " + set_mode)

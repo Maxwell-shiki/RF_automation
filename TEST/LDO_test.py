@@ -54,10 +54,10 @@ def main():
 
     OSC_resource_name = "USB0::0x0699::0x0530::C051431::0::INSTR"
     OSC = Oscilloscope_MSO64B(OSC_resource_name)
-
-
-
-
+    # OSC.save_img()
+    # OSC.save_img('./fig/', 'test')
+    # OSC.save_csv()
+    OSC.close()
 
 
 if __name__ == "__main__":

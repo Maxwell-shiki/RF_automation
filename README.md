@@ -98,6 +98,8 @@
 
 2023.11.7
 -----
+- 写测试代码
 - 重构进度
-  - 示波器：
-
+  - 示波器：截屏传输到本地
+- [Tektronix Programmatic Control Samples](https://github.com/tektronix/Programmatic-Control-Examples)
+- 可以参考官方 [MSO 6 Series](https://github.com/tektronix/Programmatic-Control-Examples/tree/master/Examples/Oscilloscopes/TekSeriesScopes_HighSpeedDigitizers)

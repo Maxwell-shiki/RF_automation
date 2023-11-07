@@ -15,7 +15,7 @@ class DCPowerSupply_ES3631A:
         self.driver = None
         self.driver = keysight_kte36000.KtE36000(self.resource_name, self.idQuery, self.reset, self.options)
 
-        print("\n  Connected to DC Power Supply ES3631A.")
+        print("\n  Connected to: DC Power Supply ES3631A.")
 
 
     def set_voltage(self, set_voltage, set_channel):
