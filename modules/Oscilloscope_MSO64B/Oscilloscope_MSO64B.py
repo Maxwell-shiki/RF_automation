@@ -43,7 +43,27 @@ class Oscilloscope_MSO64B:
         file.close()
         self.inst.write('FILESystem:DELEte \"C:/Temp/Temp.png\"')
 
-    def 
+    def save_data(self, path=None, filename=None, format='csv'):
+        if path == None:
+            path = './data/'
+            os.makedirs(path, exist_ok=True)
+        else:
+            # Ex: path = './fig/2023-01-01/'
+            os.makedirs(path, exist_ok=True)
+        if filename == None:
+            dt = datetime.now()
+            filename = dt.strftime("Osc_%Y%m%d_%H%M%S"+"."+format)
+        else:
+            filename = filename
+        
+        # self.inst.write('SAV:PLOTData \"C:/Temp/Temp.csv\"')
+        # self.inst.query('*OPC?')
+        # self.inst.write('FILESystem:READFile \"C:/Temp/Temp.csv\"')
+        # data = self.inst.read_raw(1024*1024)
+        # file = open("{}{}.{}".format(path, filename, format), "wb")
+        # file.write(data)
+        # file.close()
+        # self.inst.write('FILESystem:DELEte \"C:/Temp/Temp.csv\"')
 
     
     def close(self):

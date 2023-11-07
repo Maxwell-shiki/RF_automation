@@ -6,14 +6,14 @@
 # Python 2.7.5
 #-------------------------------------------------------------------------------
 import visa
-  
+
 instrument_id = "TCPIP::10.0.0.6::INSTR" #replace with your instrument identifier
 
 #Connect to scope and print ID
 rm = visa.ResourceManager()
 rm.list_resources()
 scope = rm.open_resource(instrument_id)
-print scope.ask('*IDN?')
+print (scope.ask('*IDN?'))
 
 #Save image on scope harddrive
 scope.write('SAVE:IMAGE \'c:/TEMP.PNG\'')
