@@ -20,10 +20,10 @@ from Oscilloscope_MSO64B import Oscilloscope_MSO64B
 # ==================================
 
 def main():
-    # PS_resource_name = "USB0::0x2A8D::0x1002::MY61003060::0::INSTR"
-    # DCPS = DCPowerSupply_ES3631A(PS_resource_name)
-    # DCPS.set_voltage(5.0, 1)
-    # DCPS.close()
+    PS_resource_name = "USB0::0x2A8D::0x1002::MY61003060::0::INSTR"
+    DCPS = DCPowerSupply_ES3631A(PS_resource_name)
+    DCPS.set_voltage(5.0, 1)
+    DCPS.close()
     # error handling is needed
 
     MM_resource_name = "GPIB0::22::INSTR"
@@ -35,29 +35,27 @@ def main():
     print("    Voltage output = ", Volt_output, "V")
     MM.close()
 
-    # type of resource name should have consistency
     # more functions are needed 
-    # gpib = 19
-    # de = SignalGenerator_1465L(gpib)
-    # de.open()
 
-    # de.set_freq('128MHz')
-    # # de.set_freq('300MHz', '5MHz')
-    # # de.set_freq('500MHz', '10MHz', '0GHz', None, '5')
+    SG_resource_name = "GPIB1::19::INSTR"
+    # SG = SignalGenerator_1465L(SG_resource_name)
+    # SG.LFO()
 
-    # de.set_power('-10dBm')
 
-    # de.get_freq()
-    # de.get_power()
 
-    # de.close()
 
-    OSC_resource_name = "USB0::0x0699::0x0530::C051431::0::INSTR"
-    OSC = Oscilloscope_MSO64B(OSC_resource_name)
-    # OSC.save_img()
-    # OSC.save_img('./fig/', 'test')
-    # OSC.save_csv()
-    OSC.close()
+    # SG.inst.write(':LFOutput:STATe ON\n')
+    # SG.inst.write(':LFO:FREQ 1MHz\n')
+    # SG.inst.write(':LFO:SHAPe SINE\n')
+
+    # SG.close()
+
+    # OSC_resource_name = "USB1::0x0699::0x0530::C051431::0::INSTR"
+    # OSC = Oscilloscope_MSO64B(OSC_resource_name)
+    # # OSC.save_img()
+    # # OSC.save_img('./fig/', 'test')
+    # # OSC.save_csv()
+    # OSC.close()
 
 
 if __name__ == "__main__":
