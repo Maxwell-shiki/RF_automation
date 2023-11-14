@@ -3,7 +3,8 @@ import numpy as np
 import time
 
 class SignalGenerator_1465L():
-    def __init__(self, resource_name, *args):
+    # def __init__(self, resource_name, *args):
+    def connect(self, resource_name):
         self.resource_name = resource_name
         self.rm = visa.ResourceManager()
         self.inst = self.rm.open_resource(self.resource_name)
@@ -13,46 +14,42 @@ class SignalGenerator_1465L():
 
         # self.inst.write('*RST\n')
         # 好像每次写复位*RST后面就写不进去了
-    
+    def freq(self):
+        pass
+
     def close(self):
         if self.inst is not None:
             self.inst.close()
             self.inst = None
-    
-# class LFO(SignalGenerator_1465L):
-#     def __init__(self):
-#         super(LFO,self).__init__(self)
-#         self.state = 'ON'
-#         self.inst.write(':LFOutput:STATe %s\n' % self.state)
-#         print('    LF Output is: ', self.state)
+            print('  Signal Generator connection closed\n')
 
-    # class LFO(self.inst):
-    #     def __init__(self, inst):
-    #         self.inst = inst
-    #         self.state = 'ON'
-    #         SignalGenerator_1465L.inst.write(':LFOutput:STATe %s\n' % self.state)
-    #         print('    LF Output is: ', self.state)
-        
+class Freq(SignalGenerator_1465L):
+    def set_freq(self, value):
+        self.inst.write(':FREQ %s\n' % value)
+        print('    Setting frequency:\t\t', value)
     
-    # def set_freq(self, freq, step=None, offset=None, ref=None, mult=None):
-    #     self.inst.write(':FREQ %s\n' % freq)
-    #     if step is not None:
-    #         self.inst.write(':FREQ:STEP %s\n' % step)
-    #     if offset is not None:
-    #         self.inst.write(':FREQ:OFFS %s\n' % offset)
-    #     if ref is not None:
-    #         self.inst.write(':FREQ:REF %s\n' % ref)
-    #     if mult is not None:
-    #         self.inst.write(':FREQ:MULT %s\n' % mult)
-    
-    # def set_power(self, power, offset=None, ref=None):
-    #     self.inst.write(':POW %s\n' % power)
-    #     if offset is not None:
-    #         self.inst.write(':POW:OFFS %s\n' % offset)
-    #     if ref is not None:
-    #         self.inst.write(':POW:REF:STAT 1\n')
-    #         self.inst.write(':POW:REF %s\n' % ref)
+    def set_step(self, value):
+        self.inst.write(':FREQ:STEP %s\n' % value)
+        print('    Setting frequency step:\t', value)
 
+    # feat: offset, ref, mult 待写
+
+class LFO(SignalGenerator_1465L):
+    def stat(self, value):
+        self.inst.write(':LFOutput:STATe %s\n' % value)
+        print('    Setting LFO state:\t\t', value)
+
+    def set_freq(self, value):
+        self.inst.write(':LFO:FREQ %s\n' % value)
+        print('    Setting LFO frequency:\t', value)
+
+    def set_ampl(self, value):
+        self.inst.write(':LFO:AMPL %s\n' % value)
+        print('    Setting LFO amplitude:\t', value)
+
+    def set_shape(self, value):
+        self.inst.write(':LFO:SHAPe %s\n' % value)
+        print('    Setting LFO shape:\t\t', value)
 
     # def get_freq(self):
     #     freq = self.inst.query('FREQ?')

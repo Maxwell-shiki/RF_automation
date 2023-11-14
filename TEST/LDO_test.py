@@ -13,7 +13,8 @@ for root, dirs, files in os.walk(path_modules):
 
 from DCPowerSupply_ES3631A import DCPowerSupply_ES3631A  
 from Multimeter_3458A import Multimeter_3458A
-from SignalGenerator_1465L import SignalGenerator_1465L
+# from SignalGenerator_1465L import SignalGenerator_1465L
+from SignalGenerator_1465L import SignalGenerator_1465L, Freq, LFO
 from Oscilloscope_MSO64B import Oscilloscope_MSO64B
 # 第一个是.py文件名，第二个是class名
 
@@ -38,17 +39,19 @@ def main():
     # more functions are needed 
 
     SG_resource_name = "GPIB1::19::INSTR"
-    # SG = SignalGenerator_1465L(SG_resource_name)
-    # SG.LFO()
-
-
-
-
-    # SG.inst.write(':LFOutput:STATe ON\n')
-    # SG.inst.write(':LFO:FREQ 1MHz\n')
-    # SG.inst.write(':LFO:SHAPe SINE\n')
-
+    # SG = Freq()
+    # SG.connect(SG_resource_name)
+    # SG.set_freq('10GHz')
+    # SG.set_step('1MHz')
+    SG = LFO()
+    SG.connect(SG_resource_name)
+    SG.stat('ON');
+    SG.set_freq('40KHz'); SG.set_ampl('10VPP'); SG.set_shape('SINE')
+    # SG.stat('OFF');
     # SG.close()
+
+
+    
 
     # OSC_resource_name = "USB1::0x0699::0x0530::C051431::0::INSTR"
     # OSC = Oscilloscope_MSO64B(OSC_resource_name)
