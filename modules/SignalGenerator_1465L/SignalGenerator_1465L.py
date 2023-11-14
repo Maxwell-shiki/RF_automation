@@ -31,6 +31,10 @@ class Freq(SignalGenerator_1465L):
     def set_step(self, value):
         self.inst.write(':FREQ:STEP %s\n' % value)
         print('    Setting frequency step:\t', value)
+    
+    def set_offset(self, offset):
+        self.inst.write(':FREQ:OFFS %s\n' % offset)
+        print('    Setting frequency offset:\t', offset)
 
     # feat: offset, ref, mult 待写
 

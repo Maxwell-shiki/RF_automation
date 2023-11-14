@@ -121,7 +121,7 @@ class Oscilloscope_MSO64B:
                                                                 # > 8bit, so 2 bytes
         # # acq config
         # self.inst.write('acquire:state 0')                          # stop acq
-        # # self.inst.write('acquire:stopafter sequence')               # single (单个波形)
+        # # self.inst.write('acquire:stopafter sequence')             # single (单个波形)
         # self.inst.write('acquire:stopafter runstop')                # runstop (连续运行)
         # self.inst.write('acquire:state 1')                          # start acq
         # r = self.inst.query('*OPC?')                                # sync
@@ -151,7 +151,7 @@ class Oscilloscope_MSO64B:
         # vertical (voltage)
         unscaled_wave = np.array(bin_wave, dtype='double')   # data type conversion
         scaled_wave = (unscaled_wave - vpos) * vscale + voff
-        print('    Sample and plot DONE.')
+        print('    Sample and plot completed.')
 
         # plot
         plt.plot(scaled_time, scaled_wave)

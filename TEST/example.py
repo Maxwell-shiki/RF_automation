@@ -1,7 +1,7 @@
 import sys, os
 import pyvisa as visa
 
-# ========= import modules =========
+# ========= import modules ================================
 path_modules = '..\\modules'
 
 for root, dirs, files in os.walk(path_modules):
@@ -16,14 +16,14 @@ from Multimeter_3458A import Multimeter_3458A
 # from SignalGenerator_1465L import *
 from SignalGenerator_1465L import SignalGenerator_1465L, Freq, LFO
 from Oscilloscope_MSO64B import Oscilloscope_MSO64B
-# 第一个是.py文件名，第二个是class名
 
-# ==================================
+# =========================================================
 
 def main():
     PS_resource_name = "USB0::0x2A8D::0x1002::MY61003060::0::INSTR"
     DCPS = DCPowerSupply_ES3631A(PS_resource_name)
     DCPS.set_voltage(5.0, 1)
+    DCPS.set_current(0.5, 1)
     DCPS.close()
     # error handling is needed
 
@@ -46,19 +46,26 @@ def main():
     SG = LFO()
     SG.connect(SG_resource_name)
     SG.stat('ON');
-    SG.set_freq('40KHz'); SG.set_ampl('10VPP'); SG.set_shape('SINE')
+    SG.set_freq('20KHz'); SG.set_ampl('2VPP'); SG.set_shape('SINE')
     # SG.stat('OFF');
     # SG.close()
 
     OSC_resource_name = "USB0::0x0699::0x0530::C051431::0::INSTR"
     OSC = Oscilloscope_MSO64B(OSC_resource_name)
-    # OSC.save_img()
+    OSC.save_img()
     # OSC.save_img('test', './fig/')
-    # OSC.save_waveform()
+    OSC.save_waveform()
 
-    # OSC.sample_and_plot()
+    # transfer .wfm to .csv
+    # os.system('cd ./data')
+    # os.system('./ConvertTekWfm.exe ./tmp.wfm /CSV tek000.csv')
+    # os.system('cd ..')
+
+    OSC.sample_and_plot()
 
     # OSC.close()
+
+    print('\n  Test done.\n')
 
 
 if __name__ == "__main__":

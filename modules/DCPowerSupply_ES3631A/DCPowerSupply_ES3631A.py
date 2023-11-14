@@ -25,6 +25,14 @@ class DCPowerSupply_ES3631A:
 
         self.driver.output.set_voltage_level(set_voltage, set_channel_str)
         self.driver.output.set_enabled(1, set_channel_str)
+
+    def set_current(self, set_current, set_channel):
+        set_channel_str = "(@" + str(set_channel) + ")"
+        # print('    Setting output parameters...')
+        print('    Setting Output: Channel', set_channel, 'current =', set_current, 'A')
+
+        self.driver.output.set_current_limit(set_current, set_channel_str)
+        self.driver.output.set_enabled(1, set_channel_str)
     
     def close(self):
         if self.driver is not None:
