@@ -1,4 +1,5 @@
 import sys, os
+import subprocess
 import pyvisa as visa
 
 # ========= import modules ================================
@@ -50,20 +51,20 @@ def main():
     # SG.stat('OFF');
     # SG.close()
 
-    OSC_resource_name = "USB0::0x0699::0x0530::C051431::0::INSTR"
-    OSC = Oscilloscope_MSO64B(OSC_resource_name)
-    OSC.save_img()
-    # OSC.save_img('test', './fig/')
-    OSC.save_waveform()
+    MSO_resource_name = "USB0::0x0699::0x0530::C051431::0::INSTR"
+    MSO = Oscilloscope_MSO64B(MSO_resource_name)
+    # MSO.save_img()
+    # MSO.save_img('test', './fig/')
+    MSO.save_waveform('tmp', './data/')
 
     # transfer .wfm to .csv
-    # os.system('cd ./data')
-    # os.system('./ConvertTekWfm.exe ./tmp.wfm /CSV tek000.csv')
-    # os.system('cd ..')
+    os.chdir('./data/')
+    os.system(".\ConvertTekWfm.exe .\\tmp.wfm /CSV tek000.csv > nul 2>&1")
 
-    OSC.sample_and_plot()
+    # MSO.sample_and_plot()
 
-    # OSC.close()
+    # SG.close()
+    # MSO.close()
 
     print('\n  Test done.\n')
 

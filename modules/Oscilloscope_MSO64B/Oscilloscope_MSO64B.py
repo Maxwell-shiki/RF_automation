@@ -166,4 +166,5 @@ class Oscilloscope_MSO64B:
     def close(self):
         self.inst.close()
         self.rm.close()
+        # print("  Oscilloscope MSO64B closed.\n")
 

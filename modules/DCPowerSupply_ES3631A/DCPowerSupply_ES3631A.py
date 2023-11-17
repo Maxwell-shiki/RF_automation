@@ -37,7 +37,7 @@ class DCPowerSupply_ES3631A:
     def close(self):
         if self.driver is not None:
             self.driver.close()
-        print('  DC Power Supply ES3631A Connection closed.\n')
+        # print('  DC Power Supply ES3631A Connection closed.\n')
 
 
 # ==========================================================================

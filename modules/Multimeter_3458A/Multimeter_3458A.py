@@ -49,4 +49,4 @@ class Multimeter_3458A:
     def close(self):
         self.scope.close()
         self.rm.close()
-        print("  Multimeter 3458A Connection closed.\n")
+        # print("  Multimeter 3458A Connection closed.\n")
