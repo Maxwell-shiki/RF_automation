@@ -138,12 +138,14 @@
 
 2023.11.21
 --------
-- 做报告
-  - ppt 代码展示
-    1. 
-- 听学长报告
+- 做报告, 进行阶段展示
+- 听组会
   - 上电时间一般是us级别
   - 做产品和写论文不一样，产品更注重木桶原理，论文选最极致的
   - [Guard ring](https://zhuanlan.zhihu.com/p/44822758), 给两圈，pick up，可能顺便给电源和地打一圈
   - 解天线效应可以先绕道M7再绕回来
   - ROIC ADC
+
+- 尹老师好像挺感兴趣我的beamer的，这里放个我魔改的[link](https://www.overleaf.com/latex/templates/fdu-beamer-theme/vjhpmpndbqtc)(本来是复旦学长魔改清华的)
+
+- 以后可能还得讲点latex, matlab之类的东西
