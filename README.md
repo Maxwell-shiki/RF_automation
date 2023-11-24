@@ -149,3 +149,6 @@
 - 尹老师好像挺感兴趣我的beamer的，这里放个我魔改的[link](https://www.overleaf.com/latex/templates/fdu-beamer-theme/vjhpmpndbqtc)(本来是复旦学长魔改清华的)
 
 - 以后可能还得讲点latex, matlab之类的东西
+
+2023.11.24
+-----
