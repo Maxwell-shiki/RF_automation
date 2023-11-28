@@ -156,3 +156,17 @@
 - 借了本书：《CMOS低压差线性稳压器》王忆、何乐年等著
 - Cadence了解下大概的学习曲线，可能的话再看下嘉立创EDA的PCB怎么画
 - 准备安装一个Cadence SPB 17.2
+
+2023.11.28
+-----
+- 芯片研发测试实验室的门禁密码是654321
+- 还是准备在Linux上安Cadence IC617，学学梅老师给的书先
+- Cadence 安装在 `D:/Cadence`下
+  - win_version: [PSpice 17.2 安装教程](https://blog.csdn.net/weixin_46161549/article/details/117784869), [Cadence OrCAD Allegro 资源分享](https://www.mr-wu.cn/cadence-orcad-allegro-resource-downloads/)(含阿狸狗破解), [PSpice 教程学习笔记](https://blog.csdn.net/qq_42240380/article/details/122378841)
+  - linux_version: [Cadence IC设计环境搭建（IC617+MMSIM151+Calibre2015）](https://cloud.tencent.com/developer/article/2033462)  
+<br>  
+- Linux_version安装笔记:
+  - VMWare 14在win11下不好使，换了17; 共享文件夹放在 `D:\Cadence\linux_version\share`
+  - ~~CentOS 7 配置~~ 搞了一下午太烦了不行  
+  - 转向[Cadence Virtuoso IC617的启动和新建工程](https://blog.csdn.net/qq_39792063/article/details/122056524)
+  - 下了[EETOP上配置好的 IC617](https://bbs.eetop.cn/thread-895652-1-1.html)，网盘下载有点慢，麻了
