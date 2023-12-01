@@ -170,3 +170,11 @@
   - ~~CentOS 7 配置~~ 搞了一下午太烦了不行  
   - 转向[Cadence Virtuoso IC617的启动和新建工程](https://blog.csdn.net/qq_39792063/article/details/122056524)
   - 下了[EETOP上配置好的 IC617](https://bbs.eetop.cn/thread-895652-1-1.html)，网盘下载有点慢，麻了
+
+
+2023.12.1
+-----
+- 之前梅老师帮忙在电脑安装了一个Cadence IC618
+- 整理实验室
+- 重新安装了Cadence OrCAD 和 Allegro
+
