@@ -1,0 +1,1 @@
+This RAK illustrates how to use the SpectreRF tool within the ADE Explorer/Assembler environment to measure PSRR for driven and autonomous circuits. Last Tested Releases: IC6.1.8.500.2200(ISR22), SPECTRE20.1 ISR12
