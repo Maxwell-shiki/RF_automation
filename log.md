@@ -175,10 +175,19 @@
 2023.12.1
 -----
 - 之前梅老师帮忙在电脑安装了一个Cadence IC618
-- 整理实验室
+- 整理实验室 
+  - 按邓老师要求理了下，理好拍了个视频发过去了
 - 重新安装了Cadence OrCAD 和 Allegro
 
 2023.12.5
 ------
-- 自己的事情：why school, 额外文书，计算机体系结构作业
-- 学LDO基础知识，尽量做出些进展
+- ~~自己的事情：why school, 额外文书，计算机体系结构作业~~
+- 学LDO基础知识，尽量做出些**进展**，感觉有点停滞了
+- 学点git commit规范
+  - ` git commit -m"`curl -s http://whatthecommit.com/index.txt`"` 随机生成commit，这也太搞了哈哈
+  - 参考 [阮一峰 博客](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)，[Angular规范](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit?pli=1#heading=h.greljkmo14y0)  
+  - 安装 commitizen
+    - 下载nodejs
+      - nodejs安装路径: D:\Program Files\nodejs
+      - 注意要开管理员模式
+      - [安装参考](https://blog.csdn.net/weixin_43128203/article/details/118194415)
