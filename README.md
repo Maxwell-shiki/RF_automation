@@ -181,7 +181,6 @@
 
 2023.12.5
 ------
-- ~~自己的事情：why school, 额外文书，计算机体系结构作业~~
 - 学点git commit规范
   - ` git commit -m"`curl -s http://whatthecommit.com/index.txt`"` 随机生成commit，这也太搞了哈哈
   - 参考 [阮一峰 博客](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)，[Angular规范](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit?pli=1#heading=h.greljkmo14y0)  
