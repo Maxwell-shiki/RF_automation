@@ -196,3 +196,10 @@
   - 资料再拷了一份放在 `.\reference\LDO`下
     - 有cadence vco psrr的测量范例
     - 有学长做的简单的LDO的设计仿真，帮助上手
+
+
+2023.12.8
+-----
+- 下载了[模拟IC设计Cadence网课](https://caiyun.139.com/w/i/1A5CvX4US421D)
+- 安装了Potplayer
+- 学习Cadence操作
