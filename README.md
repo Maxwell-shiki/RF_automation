@@ -203,3 +203,9 @@
 - 下载了[模拟IC设计Cadence网课](https://caiyun.139.com/w/i/1A5CvX4US421D)
 - 安装了Potplayer
 - 学习Cadence操作
+
+2023.12.19
+----
+- 学习梅老师给到的B站视频，讲LDO设计
+- 学习Cadence
+- 调试Tektronix AEG5204
