@@ -1,0 +1,1 @@
+"sin1" = sin(pi * scale) + .5 * sin (3 * pi * scale)

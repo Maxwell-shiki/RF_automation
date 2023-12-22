@@ -208,4 +208,8 @@
 ----
 - 学习梅老师给到的B站视频，讲LDO设计
 - 学习Cadence
-- 调试Tektronix AEG5204
+- 调试Tektronix AWG5204
+
+2023.12.22
+-----
+- 调试Tektronix AWG5204
