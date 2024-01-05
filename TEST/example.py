@@ -21,12 +21,12 @@ from Oscilloscope_MSO64B import Oscilloscope_MSO64B
 
 # 第二批调试的设备
 from MicrowavePowerMeter_2438PA import MicrowavePowerMeter_2438PA
-from SignalGenerator_SMA100B import SignalGenerator_SMA100B, FREQ, POW
+from SignalGenerator_SMA100B import SignalGenerator_SMA100B
 
 # =========================================================
 
 def main():
-    # **********************  电源  ******************************
+    # **********************  电源  ********************************************************
     # PS_resource_name = "USB0::0x2A8D::0x1002::MY61003060::0::INSTR"
     # DCPS = DCPowerSupply_ES3631A(PS_resource_name)
     # DCPS.set_voltage(3.3, 1)
@@ -34,9 +34,9 @@ def main():
 
     # DCPS.close()
     # error handling is needed
-    # ***********************************************************
+    # **************************************************************************************
 
-    # **********************  万用表  ***************************
+    # **********************  万用表  *******************************************************
     # MM_resource_name = "GPIB0::22::INSTR"
     # MM = Multimeter_3458A(MM_resource_name)
     # # MM.test()
@@ -47,9 +47,9 @@ def main():
     # MM.close()
 
     # # more functions are needed 
-    # ***********************************************************
+    # **************************************************************************************
 
-    # **********************  信号源 1465L  **********************
+    # **********************  信号源 1465L  ************************************************
     # SG_resource_name = "GPIB1::19::INSTR"
     # # SG = Freq()
     # # SG.connect(SG_resource_name)
@@ -61,9 +61,9 @@ def main():
     # SG.set_freq('20KHz'); SG.set_ampl('2VPP'); SG.set_shape('SINE')
     # # SG.stat('OFF');
     # # SG.close()
-    # ***********************************************************
+    # *************************************************************************************
 
-    # **********************  示波器  ****************************
+    # **********************  示波器  *****************************************************
     # MSO_resource_name = "USB0::0x0699::0x0530::C051431::0::INSTR"
     # MSO = Oscilloscope_MSO64B(MSO_resource_name)
     # MSO.save_img()
@@ -78,9 +78,9 @@ def main():
 
     # SG.close()
     # MSO.close()
-    # ***********************************************************
+    # *************************************************************************************
 
-    # **********************  功率计  ****************************
+    # **********************  功率计  *****************************************************
     # MPM_resource_name = 'GPIB0::13::INSTR'
     # MPM = MicrowavePowerMeter_2438PA(MPM_resource_name)
     # # freq = MPM.get_freq()
@@ -89,31 +89,68 @@ def main():
     # print("    Power = ", power, "dBm now.")
 
     # MPM.close()
-    # ******************************************************
+    # *************************************************************************************
 
-    # **********************  信号源SMA100B  *********************
+    # **********************  信号源SMA100B  **********************************************
     SG_resource_name = 'TCPIP0::SMA100B-106560::hislip0::INSTR'
-    # 基础操作
-    # SG = SignalGenerator_SMA100B()
-    # SG.connect(SG_resource_name)
+    SG = SignalGenerator_SMA100B(SG_resource_name)
+
+    # MAIN system
+    SG.write('*RST')
+
+    # DISPlay subsystem
+    # SG.Disp(SG).bright(14)
+    # SG.Disp(SG).ann('FREQ', 'ON')     # 'FREQ, AMPL, ALL'
+
+# 问下 AM FM PM使用时需要设置哪些参数
+
+    # AM subsystem
+    # SG.AM(SG).state(ch=1, state='OFF')
+
+    # FM subsystem
+    # SG.FM(SG).state(ch=1, state='OFF')
+
+    # PM subsystem
+    # SG.PM(SG).state(ch=1, state='OFF')
+
+    # LFO subsystem
+    # SG.LFO(SG).shape('SINE')     # 'SIN, SQUare, PULSe, TRIangle, TRAPeze'
+    # SG.LFO(SG).freq(2e4)         # Hz
+    # SG.LFO(SG).voltage(1.5)      # V
+    # # SG.LFO(SG).offset(1.65)      # V
+
+    # FREQuency subsystem
+    # 默认设置模式为CW/FIXED，函数内没写修改模式的指令
+    # SG.Freq(SG).set(6e9)
+    # SG.Freq(SG).offset(2e9)
+    # SG.Freq(SG).multi(1.5)
+    # print('    Frequency =', SG.query('SOUR:FREQ:CW?').replace('\n',''), 'Hz')
+
+    # POWer subsystem
+    # SG.write('POW:EMF:STAT 1')     
+        # activeates display of the signal level as voltage of the EMF (no-load voltage)
+        # If disabled, the level is displayed as a voltage over a 50 Ohm load
+    # SG.Pow(SG).set(-10)     # dBm
+    # SG.Pow(SG).offset(2)    # dB
+    # print('    Level =', SG.query('SOUR:POW?').replace('\n',''), 'dBm')
+
+    # 输出信号
+    # SG.write('OUTP1 ON')
+
+    # print(SG.query('SYST:ERR?'))
+
+    # END
+    # SG.write('OUTP1 OFF')
     # SG.write('*RST')
-    # SG.set_brightness(14)
-
-    # 频率设置
-    # SG = FREQ()
-    # SG.connect(SG_resource_name)
-    # SG.set_freq(1.14514E9)
-    # SG.set_pow(-12)
-    
-    # 功率设置
-    SG = POW()
-    SG.connect(SG_resource_name)
-    SG.set_pow(-12)
-
-    SG.close()
-    # ******************************************************
+    # SG.close()
+    # *************************************************************************************
 
     print('\n  Test done.\n')
+
+
+    # 找个空得把模块都加个直接写指令的write函数, SG_SMA100B的写了
+    # 然后嵌套类的方法得按照SMA100B的写法重新写一遍
+    # 测试代码例子也重新写一遍另外放在一个文件夹里，这个文件夹只用来引用
 
 
 if __name__ == "__main__":
