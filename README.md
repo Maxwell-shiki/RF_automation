@@ -239,3 +239,23 @@
 - SMA100B暂时调试完毕
   - 输出功能除了FM、AM等的细节参数未调节，其他都调好了
   - 监控、存储、传输等功能由于选配件的问题，无法调试
+
+2024.1.9
+------
+- 准备新增 Error handling & 越过模块化直接写SCPI指令的函数
+  - 电源 `DCPowerSupply_ES3631A` 因为使用的是外部现有模块，暂时不加直接写SCPI指令的函数
+  - Error handling 就 直接读 `SYST:ERR?` 吧
+
+- 增补模块功能
+  - 电源 `DCPowerSupply_ES3631A` 
+    - 支持电压电流读取
+  - 万用表 `Multimeter_3458A`
+    - 优化，合并两步设置操作为一步
+    - 支持直接的 write/query SCPI指令
+  - 信号发生器 `SignalGenerator_1465L`
+    - 优化模块代码结构，增加输出功率电平子类
+    - 支持直接的 write/query SCPI指令
+  - 功率计 `MicrowavePowerMeter_2438PA`
+    - 支持直接的 write/query SCPI指令
+
+- 开始调试 网络分析仪

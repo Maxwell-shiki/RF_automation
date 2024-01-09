@@ -18,26 +18,36 @@ class DCPowerSupply_ES3631A:
         print("\n  Connected to DC Power Supply: ES3631A.")
 
 
-    def set_voltage(self, set_voltage, set_channel):
-        set_channel_str = "(@" + str(set_channel) + ")"
+    def set_voltage(self, set_voltage, channel):
+        channel_str = "(@" + str(channel) + ")"
         # print('    Setting output parameters...')
-        print('    Setting Output: Channel', set_channel, 'voltage =', set_voltage, 'V')
+        print('    Setting Output: Channel', channel, 'voltage =', set_voltage, 'V')
 
-        self.driver.output.set_voltage_level(set_voltage, set_channel_str)
-        self.driver.output.set_enabled(1, set_channel_str)
+        self.driver.output.set_voltage_level(set_voltage, channel_str)
+        self.driver.output.set_enabled(1, channel_str)
 
-    def set_current(self, set_current, set_channel):
-        set_channel_str = "(@" + str(set_channel) + ")"
+    def set_current(self, set_current, channel):
+        channel_str = "(@" + str(channel) + ")"
         # print('    Setting output parameters...')
-        print('    Setting Output: Channel', set_channel, 'current =', set_current, 'A')
+        print('    Setting Output: Channel', channel, 'current =', set_current, 'A')
 
-        self.driver.output.set_current_limit(set_current, set_channel_str)
-        self.driver.output.set_enabled(1, set_channel_str)
+        self.driver.output.set_current_limit(set_current, channel_str)
+        self.driver.output.set_enabled(1, channel_str)
     
+    def get_voltage(self, channel):
+        channel_str = "(@" + str(channel) + ")"
+        voltage =  self.driver.measurement.measure(keysight_kte36000.FetchType.VOLTAGE, channel_str)
+        return voltage
+
+    def get_current(self, channel):
+        channel_str = "(@" + str(channel) + ")"
+        current =  self.driver.measurement.measure(keysight_kte36000.FetchType.CURRENT, channel_str)
+        return current
+
     def close(self):
         if self.driver is not None:
             self.driver.close()
-        # print('  DC Power Supply ES3631A Connection closed.\n')
+        print('  DC Power Supply ES3631A Connection closed.\n')
 
 
 # ==========================================================================

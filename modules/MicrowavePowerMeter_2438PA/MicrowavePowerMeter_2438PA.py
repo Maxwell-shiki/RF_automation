@@ -26,6 +26,12 @@ class MicrowavePowerMeter_2438PA:
         power =  float(power)
         # print("    Power = ", power, "dBm now.")
         return power
+
+    def write(self, command):
+        self.scope.write(command)
+    
+    def query(self, command):
+        return self.scope.query(command)
     
     def close(self):
         self.scope.close()

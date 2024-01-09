@@ -3,73 +3,58 @@ import numpy as np
 import time
 
 class SignalGenerator_1465L():
-    # def __init__(self, resource_name, *args):
-    def connect(self, resource_name):
+    def __init__(self, resource_name):
         self.resource_name = resource_name
         self.rm = visa.ResourceManager()
-        self.inst = self.rm.open_resource(self.resource_name)
-        self.inst.read_termination = '\n'
-        self.inst.write('*CLS\n')
-        print('\n  Connected to Signal Generator: ', self.inst.query('*IDN?'))
-
-        # self.inst.write('*RST\n')
-        # 好像每次写复位*RST后面就写不进去了
-    def freq(self):
-        pass
+        self.sg = self.rm.open_resource(self.resource_name)
+        self.sg.read_termination = '\n'
+        self.sg.write('*CLS\n')
+        print('\n  Connected to Signal Generator: ', self.sg.query('*IDN?'))
+    
+    def write(self, command):
+        self.sg.write(command)
+    
+    def query(self, command):
+        return self.sg.query(command)
 
     def close(self):
-        if self.inst is not None:
-            self.inst.close()
-            self.inst = None
+        if self.sg is not None:
+            self.sg.close()
+            self.sg = None
             print('  Signal Generator connection closed\n')
-
-class Freq(SignalGenerator_1465L):
-    def set_freq(self, value):
-        self.inst.write(':FREQ %s\n' % value)
-        print('    Setting frequency:\t\t', value)
     
-    def set_step(self, value):
-        self.inst.write(':FREQ:STEP %s\n' % value)
-        print('    Setting frequency step:\t', value)
+    class Freq:
+        # 打开射频输出直接写`OUTP ON`
+        def __init__(self, sg):
+            self.sg = sg
+        def set(self, value):
+            self.sg.write(':FREQ %s\n' % value)
+        def step(self, value):
+            self.sg.write(':FREQ:STEP %s\n' % value)
+        def offset(self, value):
+            self.sg.write(':FREQ:OFFS %s\n' % value)
+
+    class LFO:
+        # 编程文档显示 不支持直流偏置设置
+        def __init__(self, sg):
+            self.sg = sg
+        def freq(self, value):
+            self.sg.write(':LFO:FREQ %s\n' % value)
+        def ampl(self, value):
+            self.sg.write(':LFO:AMPL %s\n' % value)
+        def shape(self, value):
+            self.sg.write(':LFO:SHAPe %s\n' % value)
+        def stat(self, boolean):
+            self.sg.write(':LFOutput:STATe %s\n' % boolean)
     
-    def set_offset(self, offset):
-        self.inst.write(':FREQ:OFFS %s\n' % offset)
-        print('    Setting frequency offset:\t', offset)
-
-    # feat: offset, ref, mult 待写
-
-class LFO(SignalGenerator_1465L):
-    def stat(self, value):
-        self.inst.write(':LFOutput:STATe %s\n' % value)
-        print('    Setting LFO state:\t\t', value)
-
-    def set_freq(self, value):
-        self.inst.write(':LFO:FREQ %s\n' % value)
-        print('    Setting LFO frequency:\t', value)
-
-    def set_ampl(self, value):
-        self.inst.write(':LFO:AMPL %s\n' % value)
-        print('    Setting LFO amplitude:\t', value)
-
-    def set_shape(self, value):
-        self.inst.write(':LFO:SHAPe %s\n' % value)
-        print('    Setting LFO shape:\t\t', value)
-
-    # def get_freq(self):
-    #     freq = self.inst.query('FREQ?')
-    #     step = self.inst.query('FREQ:STEP?')
-    #     # offset = self.inst.query('FREQ:OFFS?')
-    #     print('频率为:     \t', freq, ' Hz')
-    #     print('频率步进为: \t', step, ' Hz')
-    #     # print('频率偏移为: \t', offset, ' Hz')
-    #     print()
-    
-    # def get_power(self):
-    #     power = self.inst.query('POW?')
-    #     # offset = self.inst.query('POW:OFFS?')
-    #     # ref = self.inst.query('POW:REF?')
-    #     print('功率为:     \t', power, ' dBm')
-    #     # print('功率偏置为: \t', offset, ' dB')
-    #     # print('功率参考为: \t', ref, ' dBm')
-    #     print()
-
+    class Pow:
+        def __init__(self, sg):
+            self.sg = sg
+        def set(self, value):
+            self.sg.write(':POW %sdBm\n' % value)
+        def offset(self, value):
+            self.sg.write(':POW:OFFS %sdB\n' % value)
+        def ref(self, stat, value):
+            self.sg.write(':POW:REF:STAT %s\n' % stat)
+            self.sg.write(':POW:REF %sdBm\n' % value)
+        # 衰减设置，环路控制，ALC等还没写，不知道咋用

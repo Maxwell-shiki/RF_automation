@@ -13,13 +13,9 @@ class Multimeter_3458A:
         ID_msg = self.scope.query_ascii_values('ID?', converter='s', separator='\r\n')
         print("\n  Connected to Multimeter: ", ID_msg[0])
     
-    def set_mode(self, set_mode):
-        self.scope.write("FUNC " + set_mode)
-        print('    Setting mode: ', set_mode)
-
-    def set_range(self, set_mode, set_range):
-        self.scope.write(set_mode + " " + set_range)
-        print('    Setting range: ', set_range)
+    def set_measure(self, set_mode, set_range):
+        self.scope.write("FUNC " + set_mode + "; " + set_mode + " " + str(set_range))
+        print('    Start measure "', set_mode, '" in "', set_range, '" range...')
 
     def get_data(self):
         time.sleep(DEFAULT_TIMEOUT)
@@ -27,6 +23,12 @@ class Multimeter_3458A:
         data = list[0]
         data = float(data.replace(" ", ""))
         return data
+    
+    def write(self, command):
+        self.scope.write(command)
+
+    def query(self, command):
+        return self.scope.query(command)
     
     def test(self):
         # test time can be less than 1 minute, and here we read data continuously until the test is done,
@@ -49,4 +51,4 @@ class Multimeter_3458A:
     def close(self):
         self.scope.close()
         self.rm.close()
-        # print("  Multimeter 3458A Connection closed.\n")
+        print("  Multimeter 3458A Connection closed.\n")
