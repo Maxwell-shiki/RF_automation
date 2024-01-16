@@ -83,7 +83,7 @@
 ----
 - 开始测试LDO芯片 `LT3045`
 - 接口连接方式见 `test/sch`, 只能说有输出
-- 准备先测试PSRR，
+- 准备先测试PSRR
 - ~~Multimeter莫名其妙连不上了~~ 搞了两个多小时最后重启电脑就好了（呃呃
 
 
@@ -244,7 +244,7 @@
 ------
 - 准备新增 Error handling & 越过模块化直接写SCPI指令的函数
   - 电源 `DCPowerSupply_ES3631A` 因为使用的是外部现有模块，暂时不加直接写SCPI指令的函数
-  - Error handling 就 直接读 `SYST:ERR?` 吧
+  - Error handling 就 直接读 `SYST:ERR?` 吧，然后可能在测试文件里加个`try...except...finnally...`之类的结构
 
 - 增补模块功能
   - 电源 `DCPowerSupply_ES3631A` 
@@ -258,4 +258,19 @@
   - 功率计 `MicrowavePowerMeter_2438PA`
     - 支持直接的 write/query SCPI指令
 
-- 开始调试 网络分析仪
+- 开始调试 网络分析仪 `VectorNetworkAnalyzer_3672E`
+  - 建议先看 Guide.pdf, 使用门槛比一般仪器要高不少，有好多使用要求
+  - [矢量网络分析仪 使用笔记](https://zhuanlan.zhihu.com/p/566389003)
+
+2024.1.12
+----
+- 继续调试 网络分析仪 `VectorNetworkAnalyzer_3672E`
+- 测试Docker使用和环境配置
+
+2024.1.16
+----
+- 调试 网络分析仪 `VectorNetworkAnalyzer_3672E`
+  - 基础的打开窗口、设置轨迹、创建设置测量、设置扫描参数都好了
+  - snp文件的保存与传输
+
+- todo: 后续要调试 [Toomoss USB2XXX总线适配器](http://www.toomoss.com/product/8-cn.html)
