@@ -274,3 +274,5 @@
   - snp文件的保存与传输
 
 - todo: 后续要调试 [Toomoss USB2XXX总线适配器](http://www.toomoss.com/product/8-cn.html)
+
+- 晚上顾俊杰给了我PACW测试文档,根据那个写了个简单的测试程序,见 `TEST/PACW`文件夹
