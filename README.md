@@ -270,7 +270,7 @@
 2024.1.16
 ----
 - 调试 网络分析仪 `VectorNetworkAnalyzer_3672E`
-  - 基础的打开窗口、设置轨迹、创建设置测量、设置扫描参数都好了
+  - 基础的打开窗口、设置轨迹、设置测量、设置扫描参数都好了
   - snp文件的保存与传输
 
 - todo: 后续要调试 [Toomoss USB2XXX总线适配器](http://www.toomoss.com/product/8-cn.html)
