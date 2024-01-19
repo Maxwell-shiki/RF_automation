@@ -55,6 +55,7 @@ def main():
             Pout_meter_sum = 0
             for i in range(10):
                 Pout_meter_sum += MPM.get_power()
+                # MPM.write(*OPC), &judge null?
             Pout_meter = Pout_meter_sum / 10        # dBm
             # 读取万用表的电流示数 I_source mA（取10次平均）
             I_source_sum = 0
@@ -78,7 +79,7 @@ def main():
     sheet = workbook.active
     for row in zip(col1, col2, col3, col4):
         sheet.append(row)
-    workbook.save("./data/sheet.xlsx")
+    workbook.save("./data/sheet.xlsx")      # add year.month.day.hour.min.sec
     
     print('  Test done.\n')
 

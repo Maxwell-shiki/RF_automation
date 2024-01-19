@@ -276,3 +276,7 @@
 - todo: 后续要调试 [Toomoss USB2XXX总线适配器](http://www.toomoss.com/product/8-cn.html)
 
 - 晚上顾俊杰给了我PACW测试文档,根据那个写了个简单的测试程序,见 `TEST/PACW`文件夹
+
+2024.1.19
+----
+- PACW.py 根据书签增加保存文件的时间；增加module中的test demo, 见直流电源ES3631A
