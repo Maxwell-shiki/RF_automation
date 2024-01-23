@@ -276,3 +276,11 @@
 - todo: 后续要调试 [Toomoss USB2XXX总线适配器](http://www.toomoss.com/product/8-cn.html)
 
 - 晚上顾俊杰给了我PACW测试文档,根据那个写了个简单的测试程序,见 `TEST/PACW`文件夹
+
+2024.1.19
+-----
+- 写了对MOS建模测试数据
+- 邓磊让我编了2023年的温湿度数据
+
+2024.1.23
+----
