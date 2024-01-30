@@ -287,4 +287,10 @@
 ----
 - 测试 PACW测试流程 
   - sheet 格式准备再改下
-- MPM module set frequency: Hz -> GHz
+<!-- - MPM module set frequency: Hz -> GHz -->
+  - 没啥问题了
+
+2024.1.30
+----
+- 准备modularize网分
+

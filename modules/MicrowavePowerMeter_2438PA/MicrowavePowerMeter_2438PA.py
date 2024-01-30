@@ -17,7 +17,7 @@ class MicrowavePowerMeter_2438PA:
         return current_freq
 
     def set_freq(self, target_freq):
-        print("    Setting frequency to", target_freq, "Hz...")
+        print("    Setting frequency to", target_freq, "GHz...")
         self.scope.write('SENS1:FREQ ' + str(target_freq) + 'GHz')
         self.get_freq()
     

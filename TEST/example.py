@@ -91,7 +91,7 @@ def main():
     # *************************************************************************************
 
     # **********************  功率计  *****************************************************
-    # MPM_resource_name = 'GPIB0::13::INSTR'
+    # MPM_resource_name = 'GPIB1::13::INSTR'
     # MPM = MicrowavePowerMeter_2438PA(MPM_resource_name)
     # # freq = MPM.get_freq()
     # MPM.set_freq(32)
@@ -158,8 +158,6 @@ def main():
     print('  Test done.\n')
 
 
-    # 找个空得把模块都加个直接写指令的write函数, SG_SMA100B的写了
-    # 然后嵌套类的方法得按照SMA100B的写法重新写一遍
     # 测试代码例子也重新写一遍另外放在一个文件夹里，这个文件夹只用来引用
 
 

@@ -44,7 +44,7 @@ def main():
         SG.Freq(SG).set(freq*1e9)                   # GHz
         SG.write('OUTP1 ON')
         # 设置功率计频率
-        MPM.set_freq(freq)                      # GHz
+        MPM.set_freq(freq)                          # GHz
         for Pin_source in range(-30, 6, 1):
         # for Pin_source in range(-30, -29, 1):
             # 设置信号源输出功率
