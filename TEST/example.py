@@ -22,6 +22,7 @@ from Oscilloscope_MSO64B import Oscilloscope_MSO64B
 # 第二批调试的设备
 from MicrowavePowerMeter_2438PA import MicrowavePowerMeter_2438PA
 from SignalGenerator_SMA100B import SignalGenerator_SMA100B
+from VectorNetworkAnalyzer_3672E import VectorNetworkAnalyzer_3672E
 
 # =========================================================
 
@@ -153,6 +154,24 @@ def main():
     # SG.write('OUTP1 OFF')
     # SG.write('*RST')
     # SG.close()
+    # *************************************************************************************
+
+    # **********************  网络分析仪 3672E  ********************************************
+    # VNA_resource_name = 'GPIB2::16::INSTR'
+    # VNA = VectorNetworkAnalyzer_3672E(VNA_resource_name)
+
+    # VNA.listParam()
+    # VNA.DefaultTest(VNA).saveSNP(ports="1,2", param="CH1_WIN1_LINE1_PARAM1", filename="data.s2p", filedir="./data")
+    # data = VNA.DefaultTest(VNA).readSNP("data.s2p", filedir="./data")
+    # # print(data)
+
+    # # 注：
+    # # data 是一个三维矩阵，[freq_unit, measurement1, measurement2, measurement3, measurement4]
+    # # measurement1: S11, measurement2: S12, measurement3: S21, measurement4: S22
+    # # freq_unit: Hz, freq1, freq2, freq3, freq4, ...
+    # # measurement1: S11, complex1, complex2, complex3, complex4, ...
+
+    # VNA.close()
     # *************************************************************************************
 
     print('  Test done.\n')
