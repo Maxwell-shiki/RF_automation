@@ -1,0 +1,246 @@
+C51 COMPILER V9.00   MAIN                                                                  12/12/2023 16:31:28 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE main.c LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1                                                                                                                                                                                                                                                   #include<LQ12864.h>
+   2          #include<reg52.h>
+   3          #include<stdio.h>
+   4          #include <string.h>
+   5          #include<SPI_WR32bit.h>
+   6          
+   7          /*
+   8          sbit zuo=P1^5;
+   9          sbit you=P1^1;
+  10          sbit shang=P1^6;
+  11          sbit xia=P1^0;
+  12          sbit yes=P1^4;
+  13          */
+  14          
+  15          
+  16          sbit zuo=P1^3;
+  17          sbit you=P1^4;
+  18          sbit shang=P1^1;
+  19          sbit xia=P1^2;
+  20          sbit yes=P1^5;
+  21          
+  22          void main()
+  23          {
+  24   1        ulong data0=0x00000000,data1=0x00000001,data2=0x00000002,data3=0xffffffff,data4=0x0bcfaaaa,data5=0x00000
+             -000,data6=0x80101010,data7=0x00000001,datatem,PSI1,PSQ1;
+  25   1        int num=1,flag=0, reg=0,i=0,PSI=0,PSQ=1,w;
+  26   1        char str_reg[10],str_data[10],str_data_0x[10];
+  27   1        OLED_Init();
+  28   1        Draw_BMP(0,0,128,7,BMP1);
+  29   1        delay(2000);
+  30   1        delay(2000);
+  31   1        delay(2000);
+  32   1        delay(2000);
+  33   1        delay(2000);
+  34   1        OLED_Init();
+  35   1        ad9850_reset_serial();
+  36   1        OLED_P6x8Str(15, 5,"*");
+  37   1        OLED_P6x8Str(15, 2,"I:");
+  38   1        OLED_P6x8Str(68, 2,"Q:");
+  39   1        while(1)
+  40   1        {
+  41   2                if(zuo==0||you==0||shang==0||xia==0)
+  42   2                      {
+  43   3                         if(zuo==0||you==0||shang==0||xia==0)
+  44   3                      {
+  45   4                         if(you==0)
+  46   4                              {
+  47   5                                      while(you==0);
+  48   5                                              num++;
+  49   5                                      if(num<1)
+  50   5                                              num=2;
+  51   5                                      if(num>2)
+  52   5                                              num=1;
+  53   5                                      switch (num)
+  54   5                                      {
+C51 COMPILER V9.00   MAIN                                                                  12/12/2023 16:31:28 PAGE 2   
+
+  55   6                                              case 1:
+  56   6                                                      OLED_P6x8Str(15, 5,"*");
+  57   6                                                      OLED_P6x8Str(68, 5," ");
+  58   6                                                      break;
+  59   6                                              case 2:
+  60   6                                                  OLED_P6x8Str(15, 5," ");
+  61   6                                                      OLED_P6x8Str(68, 5,"*");
+  62   6                                                      break;
+  63   6                                      }
+  64   5      
+  65   5                       }
+  66   4      
+  67   4                               if(zuo==0)
+  68   4                              {
+  69   5                                      while(zuo==0);
+  70   5                                              num--;
+  71   5                                      if(num<1)
+  72   5                                              num=2;
+  73   5                                      if(num>2)
+  74   5                                              num=1;
+  75   5                                      switch (num)
+  76   5                                      {
+  77   6                                              case 1:
+  78   6                                                      OLED_P6x8Str(15, 5,"*");
+  79   6                                                      OLED_P6x8Str(68, 5," ");
+  80   6                                                      break;
+  81   6                                              case 2:
+  82   6                                                  OLED_P6x8Str(15, 5," ");
+  83   6                                                      OLED_P6x8Str(68, 5,"*");
+  84   6                                                      break;
+  85   6                                      }
+  86   5      
+  87   5                       }
+  88   4      
+  89   4      
+  90   4                                              if(shang==0)
+  91   4                              {
+  92   5                                      while(shang==0);
+  93   5                                      switch (num)
+  94   5                                      {
+  95   6                                              case 1:
+  96   6                                              PSI++;
+  97   6                                              break;
+  98   6                                              case 2:
+  99   6                                              PSQ++;
+ 100   6                                              break;
+ 101   6                                      }
+ 102   5                              }
+ 103   4      
+ 104   4                                      if(xia==0)
+ 105   4                              {
+ 106   5                                      while(xia==0);
+ 107   5                                      switch (num)
+ 108   5                                      {
+ 109   6                                              case 1:
+ 110   6                                              PSI--;
+ 111   6                                              break;
+ 112   6                                              case 2:
+ 113   6                                              PSQ--;
+ 114   6                                              break;
+ 115   6                                      }
+ 116   5                              }
+C51 COMPILER V9.00   MAIN                                                                  12/12/2023 16:31:28 PAGE 3   
+
+ 117   4      
+ 118   4      
+ 119   4                         }
+ 120   3      
+ 121   3                         if(flag==0)
+ 122   3                              {       
+ 123   4                                      OLED_P6x8Str(60,0,"  ?");
+ 124   4                                      flag=1;
+ 125   4                              }
+ 126   3                
+ 127   3                }
+ 128   2      
+ 129   2                         if(PSI<0)
+ 130   2                              PSI=63;
+ 131   2                              if(PSI>63)
+ 132   2                              PSI=0;
+ 133   2                              if(PSQ<0)
+ 134   2                              PSQ=63;
+ 135   2                              if(PSQ>63)
+ 136   2                              PSQ=0;
+ 137   2      
+ 138   2      
+ 139   2                        sprintf(str_data_0x,"%2d",PSI);
+ 140   2                    OLED_P6x8Str(15, 4,str_data_0x);
+ 141   2                        sprintf(str_data_0x,"%04lx",PSI1);
+ 142   2                    OLED_P6x8Str(15, 6,str_data_0x);
+ 143   2      
+ 144   2                        sprintf(str_data_0x,"%2d",PSQ);
+ 145   2                        OLED_P6x8Str(68, 4,str_data_0x);
+ 146   2                        sprintf(str_data_0x,"%04lx",PSQ1);
+ 147   2                        OLED_P6x8Str(68, 6,str_data_0x);
+ 148   2      
+ 149   2                        PSI1=PSI%2*1+(PSI%2==0)*2+PSI/2%2*4+(PSI/2%2==0)*8+PSI/4%2*16+(PSI/4%2==0)*32+PSI/8%2*64+(PSI/8%2==0)*
+             -128+PSI/16%2*256+(PSI/16%2==0)*512+PSI/32%2*1024+(PSI/32%2==0)*2048;
+ 150   2                        PSQ1=PSQ%2*1+(PSQ%2==0)*2+PSQ/2%2*4+(PSQ/2%2==0)*8+PSQ/4%2*16+(PSQ/4%2==0)*32+PSQ/8%2*64+(PSQ/8%2==0)*
+             -128+PSQ/16%2*256+(PSQ/16%2==0)*512+PSQ/32%2*1024+(PSQ/32%2==0)*2048;
+ 151   2                        data0= (PSQ1<<12)+ PSI1+0xff000000;
+ 152   2      
+ 153   2                              
+ 154   2                              
+ 155   2      
+ 156   2                        if(yes==0)
+ 157   2                          {
+ 158   3                               while(yes==0); 
+ 159   3                           OLED_P6x8Str(60, 0,"OK!");          
+ 160   3                               flag=0;
+ 161   3      
+ 162   3                               ad9850_fq_up=0;
+ 163   3                               ad9850_rest=0;
+ 164   3                               delay(200);
+ 165   3                               ad9850_fq_up=1;
+ 166   3                               ad9850_rest=1; 
+ 167   3                                      
+ 168   3                               ad9850_wr_serial(0,data0);
+ 169   3                               ad9850_wr_serial(1,data1);
+ 170   3                               ad9850_wr_serial(2,data2);
+ 171   3                               ad9850_wr_serial(3,data3);
+ 172   3                               ad9850_wr_serial(4,data4);
+ 173   3                               ad9850_wr_serial(5,data5);
+ 174   3                               ad9850_wr_serial(6,data6);
+ 175   3                               ad9850_wr_serial(7,data7);
+ 176   3                         w=0x10;   
+C51 COMPILER V9.00   MAIN                                                                  12/12/2023 16:31:28 PAGE 4   
+
+ 177   3                      for(i=0;i<8;i++)
+ 178   3              {
+ 179   4                      ad9850_bit_data=(w<<i)&0x80;
+ 180   4                      ad9850_w_clk=1;
+ 181   4                      ad9850_w_clk=0;
+ 182   4              }        
+ 183   3      
+ 184   3                      ad9850_bit_data=1;
+ 185   3                      ad9850_w_clk=1;
+ 186   3                      ad9850_w_clk=0;
+ 187   3      
+ 188   3              ad9850_bit_data=1;
+ 189   3                      ad9850_w_clk=1;
+ 190   3                      ad9850_w_clk=0;
+ 191   3      
+ 192   3                      ad9850_fq_up=0;
+ 193   3                      ad9850_bit_data=1;
+ 194   3                      ad9850_w_clk=1;
+ 195   3                      ad9850_w_clk=0;
+ 196   3                      ad9850_fq_up=1; 
+ 197   3      
+ 198   3                      for(i=0;i<100;i++)
+ 199   3              {
+ 200   4                      ad9850_w_clk=1;
+ 201   4                      ad9850_w_clk=0;
+ 202   4              }                                          //
+ 203   3      
+ 204   3                 delay(200);
+ 205   3      
+ 206   3                          }
+ 207   2         }
+ 208   1      }
+*** WARNING C280 IN LINE 24 OF MAIN.C: 'datatem': unreferenced local variable
+*** WARNING C280 IN LINE 26 OF MAIN.C: 'str_reg': unreferenced local variable
+*** WARNING C280 IN LINE 26 OF MAIN.C: 'str_data': unreferenced local variable
+ 209          
+ 210          
+ 211          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   3668    ----
+   CONSTANT SIZE    =   5172    ----
+   XDATA SIZE       =   ----     134
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)

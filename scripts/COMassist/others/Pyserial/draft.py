@@ -6,6 +6,7 @@
 # 5. 关闭串口
 
 import sys, os
+import re
 import time
 import serial
 import serial.tools.list_ports
@@ -32,17 +33,19 @@ def read(filename, ser):
         f.write(data)
 
 if __name__ == "__main__":
-    print_portslist()
+    # print_portslist()
+    # print(serial.tools.list_ports.comports())
     
     # 打开并配置串口
-    ser = serial.Serial(port="COM18",                       # 串口号
-                        baudrate=9600,                      # 波特率
-                        # bytesize=5,                       # 数据位
-                        parity=PARITY_NONE,                 # 校验位
-                        stopbits=STOPBITS_ONE               # 停止位
-                        # timeout=None,                     # 读超时
-                        # write_timeout=0                   # 写超时
-    )
+    # ser = serial.Serial(port="COM4",                       # 串口号
+    #                     baudrate=9600,                      # 波特率
+    #                     # bytesize=5,                       # 数据位
+    #                     parity=PARITY_NONE,                 # 校验位
+    #                     stopbits=STOPBITS_ONE               # 停止位
+    #                     # timeout=None,                     # 读超时
+    #                     # write_timeout=0                   # 写超时
+    # )
+    ser = serial.Serial(port="COM4", baudrate=9600, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE)
     
     # if ser.isOpen():
     #     print("打开串口成功")
@@ -50,7 +53,7 @@ if __name__ == "__main__":
     #     print("打开串口失败")
     
     # 发送数据
-    command = ser.write('hello'.encode("utf-8"))
+    command = ser.write('reg08=0x1111FFFF#'.encode("utf-8"))
     # command = ser.write(b'hello')
     
     # filedir = "./data/"
@@ -64,12 +67,13 @@ if __name__ == "__main__":
     # 接收数据
     # ser.readline()      # 读取一行
     # ser.read_all()      # 读取所有数据
-    data = ser.read(10)        # 读取10个字节
+    # ser.read(10)        # 读取10个字节
+    data = ser.read_all()
     print("接收到的数据：", data)
 
     # 关闭串口
-    ser.close()
-    if ser.isOpen():
-        print("关闭串口失败")
-    else:
-        print("串口已关闭")
+    # ser.close()
+    # if ser.isOpen():
+    #     print("关闭串口失败")
+    # else:
+    #     print("串口已关闭")
