@@ -67,26 +67,26 @@ def main():
 
     com1 = COMassist(portname="COM6", baudrate=9600, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE)
     
-    # VNA_resource_name = 'GPIB2::16::INSTR'
-    # VNA = VectorNetworkAnalyzer_3672E(VNA_resource_name)
+    VNA_resource_name = 'GPIB0::16::INSTR'
+    VNA = VectorNetworkAnalyzer_3672E(VNA_resource_name)
 
-    for code_I in range(63, 64):
-        for code_Q in range(63, 64):
+    for code_I in range(1, 64, 8):
+        for code_Q in range(1, 64, 8):
             code_out = genCode(code_I, code_Q)
-            # print("code_out =", code_out)
             command = 'reg00=' + code_out + '#'
 
             SPI_returndata = com1.SPI_write(command)
             print(SPI_returndata)
             com1.check(SPI_returndata)
 
-            # time.sleep(1)
+            time.sleep(1)
 
             # 保存S参数
-            # print(VNA.listParam())
-            # snpfilename = 'I'+code_I + '/Q'+code_Q + ': ' + command + '.s4p'
-            # # snpfilename = command + '.s4p'
-            # VNA.DefaultTest(VNA).saveSNP(ports="1,2,3,4", param="CH1_WIN1_LINE1_PARAM1", filename=snpfilename, filedir="./data")
+            print(VNA.listParam())
+            snpfilename = 'I'+ str(code_I) + '_Q' + str(code_Q) + '.s4p'
+            VNA.DefaultTest(VNA).saveSNP(ports="1,2,3,4", param="CH1_WIN1_LINE1_PARAM2128", filename=snpfilename, filedir="./data")
+
+            time.sleep(1)
 
 if __name__ == "__main__":
     main()
