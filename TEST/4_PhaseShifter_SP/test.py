@@ -69,6 +69,8 @@ def main():
     
     VNA_resource_name = 'GPIB0::16::INSTR'
     VNA = VectorNetworkAnalyzer_3672E(VNA_resource_name)
+    
+    VNA.write("INIT:CONT OFF")
 
     for code_I in range(1, 64, 8):
         for code_Q in range(1, 64, 8):
@@ -79,8 +81,15 @@ def main():
             print(SPI_returndata)
             com1.check(SPI_returndata)
 
-            time.sleep(1)
-
+            VNA.write("ABOR;INIT:IMM")
+            
+            while True:
+                VNA.write("*OPC?")
+                opc = VNA.read()
+                if opc == "+1":
+                    break
+                time.sleep(1)
+            
             # 保存S参数
             print(VNA.listParam())
             snpfilename = 'I'+ str(code_I) + '_Q' + str(code_Q) + '.s4p'
