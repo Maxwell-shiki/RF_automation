@@ -69,11 +69,12 @@ def main():
     
     VNA_resource_name = 'GPIB0::16::INSTR'
     VNA = VectorNetworkAnalyzer_3672E(VNA_resource_name)
+    VNA.timeout = 3000
     
     VNA.write("INIT:CONT OFF")
 
-    for code_I in range(1, 64, 8):
-        for code_Q in range(1, 64, 8):
+    for code_I in range(0, 64, 8):
+        for code_Q in range(0, 64, 8):
             code_out = genCode(code_I, code_Q)
             command = 'reg00=' + code_out + '#'
 
@@ -83,13 +84,21 @@ def main():
 
             VNA.write("ABOR;INIT:IMM")
             
-            while True:
-                VNA.write("*OPC?")
-                opc = VNA.read()
-                if opc == "+1":
-                    break
-                time.sleep(1)
+            startTime = time.time()
+            timeout = 30
             
+            while True:
+                try: 
+                    rsp = VNA.query("*OPC?")
+                    if rsp == "+1":
+                        break
+                except pyvisa.errors.VisaIOError as ex:
+                    if time.time() - startTime > timeout:
+                        print("超时: '*OPC?'未及时返回1")
+                        break
+                    else:
+                        continue
+
             # 保存S参数
             print(VNA.listParam())
             snpfilename = 'I'+ str(code_I) + '_Q' + str(code_Q) + '.s4p'
