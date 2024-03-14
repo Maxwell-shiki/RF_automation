@@ -27,6 +27,7 @@ from VectorNetworkAnalyzer_3672E import VectorNetworkAnalyzer_3672E
 
 from COMassist import COMassist
 
+# 十进制转二进制
 def dec2bin(num, bits): 
     l = []
     if num < 0:
@@ -37,12 +38,14 @@ def dec2bin(num, bits):
         if num == 0:
             return ''.join(l[::-1]).zfill(bits)
 
+# 二进制每位取非
 def bin_not(num):
     l = list(str(num))
     for i in range(len(l)):
         l[i] = '1' if l[i] == '0' else '0'
     return ''.join(l)
 
+# 生成code: reg_bank0<24>
 def genCode(I, Q):
     I_bin = dec2bin(I, 6)       # I6 I5 I4 I3 I2 I1
     Q_bin = dec2bin(Q, 6)       # Q6 Q5 Q4 Q3 Q2 Q1
@@ -65,32 +68,35 @@ def genCode(I, Q):
 
 def main():
 
+    # 打开串口, portname记得每次连接的时候看设备管理器修改
     com1 = COMassist(portname="COM6", baudrate=9600, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE)
     
+    # 打开VNA, 记得打开Keysight Connection Expert, 看是GPIB几
     VNA_resource_name = 'GPIB0::16::INSTR'
     VNA = VectorNetworkAnalyzer_3672E(VNA_resource_name)
-    VNA.timeout = 3000
+    VNA.timeout = 3000      # 设置VNA pyvisa的超时时间为3s
     
+    # 关闭网分连续模式
     VNA.write("INIT:CONT OFF")
 
     for code_I in range(0, 64, 8):
         for code_Q in range(0, 64, 8):
             code_out = genCode(code_I, code_Q)
-            command = 'reg00=' + code_out + '#'
+            command = 'reg00=' + code_out + '#'         # 对齐格式
 
             SPI_returndata = com1.SPI_write(command)
-            print(SPI_returndata)
-            com1.check(SPI_returndata)
+            print(SPI_returndata)                       
+            com1.check(SPI_returndata)                  # 检查SPI返回值是否正确
 
-            VNA.write("ABOR;INIT:IMM")
+            VNA.write("ABOR;INIT:IMM")                  # 给网分单次激励
             
-            startTime = time.time()
-            timeout = 30
+            startTime = time.time()                     # 计时
+            timeout = 30                                # 设置设置一次IQ时激励的总超时时间为30s
             
             while True:
                 try: 
-                    rsp = VNA.query("*OPC?")
-                    if rsp == "+1":
+                    rsp = VNA.query("*OPC?")            # *OPC?返回1时表示网分扫完一次
+                    if rsp == "+1\n":
                         break
                 except pyvisa.errors.VisaIOError as ex:
                     if time.time() - startTime > timeout:
@@ -103,6 +109,7 @@ def main():
             print(VNA.listParam())
             snpfilename = 'I'+ str(code_I) + '_Q' + str(code_Q) + '.s4p'
             VNA.DefaultTest(VNA).saveSNP(ports="1,2,3,4", param="CH1_WIN1_LINE1_PARAM2128", filename=snpfilename, filedir="./data")
+            # 注意此处的param参数可能需要根据"CALC1:PAR:CAT?"返回的参数进行修改
 
             time.sleep(1)
 
