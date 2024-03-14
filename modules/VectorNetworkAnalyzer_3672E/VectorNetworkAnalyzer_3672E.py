@@ -35,14 +35,14 @@ class VectorNetworkAnalyzer_3672E():
     class DefaultTest:
         def __init__(self, vna):
             self.vna = vna
-        def saveSNP(self, ports="1,2", param="CH1_WIN1_LINE1_PARAM1", filename="data.s2p", filedir="./data"):
+        def saveSNP(self, ports="1,2,3,4", param="CH1_WIN1_LINE1_PARAM1", filename="data.s4p", filedir="./data"):
             self.vna.write(':DISP:WIND1:STAT ON')                    # 打开窗口
             self.vna.write(':CALC1:PAR:SEL "%s"' % param)            # 注意要先选择测量再后续操作
             self.vna.write(':MMEM:CDIR "E:\AutoTEST"')
-            self.vna.write(':CALC:DATA:SNP:PORTs:SAVE "%s","tmp.s2p"' % ports)
+            self.vna.write(':CALC:DATA:SNP:PORTs:SAVE "%s","tmp.s4p"' % ports)
             with open(filedir + "/" + filename, "w") as f:
-                f.write(self.vna.query(":MMEM:TRAN? 'tmp.s2p'"))
-            self.vna.write(":MMEM:DEL 'tmp.s2p'")
+                f.write(self.vna.query(":MMEM:TRAN? 'tmp.s4p'"))
+            self.vna.write(":MMEM:DEL 'tmp.s4p'")
         def readSNP(self, filename, filedir="./data"):
             measurement_pattern = re.compile(r'!S[1-9]+P File: Measurements: (S\d{2}, S\d{2}, S\d{2}, S\d{2}):')
             dataformat_pattern = re.compile(r'# (Hz|GHz|MHz|kHz)  (S)  (RI|dB|MA)  R (\b\d+\.\d{3}\b)')
