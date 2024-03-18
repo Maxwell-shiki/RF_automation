@@ -85,14 +85,14 @@ def main():
             VNA.write("ABOR;INIT:IMM")
             
             startTime = time.time()
-            timeout = 30
+            timeout = 60
             
             while True:
                 try: 
                     rsp = VNA.query("*OPC?")
-                    if rsp == "+1":
+                    if rsp == "+1\n":
                         break
-                except pyvisa.errors.VisaIOError as ex:
+                except visa.errors.VisaIOError as ex:
                     if time.time() - startTime > timeout:
                         print("超时: '*OPC?'未及时返回1")
                         break
