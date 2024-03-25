@@ -12,15 +12,17 @@
 直流电源
 ---
 - [Keithley 2220-30-1 可编程直流电源](https://www.tek.com.cn/products/keithley/dc-power-supplies/2220-2230-2231-series)
+- [ITECH IT6700H系列 宽范围高压可编程直流电源](https://www.itechate.com/cn/product/dc-power-supply/IT6700H.html), IT6723B, IT6723A
+
 
 快温测试系统
 ---
-- [Mechanical Devices MaxTC G4](https://mechanical-devices.com/portfolio-posts/maxtc-high-power-temperature-forcing-system/)
-<!-- 需要校对👆 -->
+- [Mechanical Devices MaxTC G4](https://mechanical-devices.com/portfolio-posts/maxtc-high-power-temperature-forcing-system/), 👈需要校对
 
-相位噪声分析仪
+噪声分析仪
 ---
 - [R&S FSWP 相位噪声分析仪和 VCO 测试仪](https://www.rohde-schwarz.com.cn/products/test-and-measurement/phase-noise-analyzers/rs-fswp-phase-noise-analyzer-and-vco-tester_63493-120512.html)
+- [Keysight E4727A 先进低频噪声分析仪](https://www.keysight.com.cn/cn/zh/product/E4727A/advanced-low-frequency-noise-analyzer.html) (产品状态：*已淘汰*)
 
 音频分析仪
 ---
@@ -59,8 +61,7 @@
 
 老化箱
 ---
-- [TH801 顶策HTOL方案](https://www.top-ictest.com/index.php/services/ra/)
-<!-- 没找到说明书👆 -->
+- [TH801 顶策HTOL方案](https://www.top-ictest.com/index.php/services/ra/), 👈没找到说明书
 
 太赫兹S参数测试系统
 ---
@@ -98,9 +99,18 @@
 - [GGB Industries PICOPROBE MODEL 325B](https://ggb.com/home/model-325b/), 325-GSG-50-BT
 - [GGB Industries PICOPROBE MODEL 500B](https://ggb.com/home/model-500b/), 500-GSG-50-BT
 
-
 屏蔽箱
 ---
-- [豪锦 HJP - CD58](http://www.haojintech.com/index.php/search/index.html?name=HJP+-+CD)
-<!-- 为该系列的网页，没看到这一型号👆 -->
+- [豪锦 HJP - CD58](http://www.haojintech.com/index.php/search/index.html?name=HJP+-+CD), 👈为该系列的网页，没看到这一型号
 
+电磁干扰测试仪
+---
+- [Morita WM9500 3次元空間電磁界可視化システム](https://morita-tech.co.jp/emc_solution/wm95), WM9500CE
+
+红外测试平台
+---
+- [Cotest VCSEL 测试系统](https://www.cotest.com.cn/ziliaoxiazai2), 资料暂未下载
+
+脉冲发生器
+---
+- [Tektronix AFG31000 任意波函数发生器](https://www.tek.com.cn/products/signal-generators/arbitrary-function-generator/afg31000), AFG31252
