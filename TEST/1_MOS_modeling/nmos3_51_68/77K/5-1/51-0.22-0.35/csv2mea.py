@@ -61,7 +61,7 @@ def getParam_csv(filename):
         r"(?P<z_name>\w+)@"
         r"(?P<const_name>\w+)="
         r"(?P<const_value>[+-]?\d*\.\d+|\d+)"
-        r" \[(?P<type2>\w+)_"
+        r" \[(?P<type2>\w+)_"                       # 注意根据.csv文件命名格式 修改分隔符 "-" or "_"
         r"(?P<Width>\d*\.\d+|\d+)_"
         r"(?P<Len>\d*\.\d+|\d+)_"
         r"(?P<Temp>\d+)K.*.csv"
@@ -119,57 +119,6 @@ T={params['Temp']}}}'''
 
     
     f.close()
-
-    # 待处理的csv文件, 后续需要写个遍历
-#     filename = "NMOS-id-vg-vbs@vds=0.05 [NMOS_0.22_0.35_77K(36) ; 3_8_2024 3_39_12 PM].csv"
-    
-#     # 获取csv文件曲线数据, DataFrame 格式, 包括x, y两列数据及其名称
-#     curves = getCurves_csv(filename)
-#     num_curves = len(curves)
-    
-#     # 获取csv文件参数
-#     # 从文件名中得到的大多数参数, 字典 格式, 通过param['index']查询
-#     params = getParam_csv(filename)
-#     # # 获取Z轴参数
-#     z_start, z_cnt, z_step = getZAxisVal_csv(filename)
-    
-#     newmeafile = f"data_W_{params['Width']}_L_{params['Len']}_T_{params['Temp']}.mea"
-    
-#     # 新建.mea文件
-#     f = open(newmeafile , "w")
-    
-#     # 第一行, 可能后面需要改
-#     msg = ["condition{date=3/24/24,instrument=pseudo.meter,mode=forward,type=nmos}\n","\n"]
-#     f.writelines(msg)
-    
-#     curve_msg = f'''Page (name=\
-# {params['y_name'].capitalize()}_{params['x_name'].capitalize()}_{params['z_name'].capitalize()},\
-# x={params['x_name'].capitalize()},\
-# p={params['z_name'].capitalize()},\
-# y={params['y_name'].capitalize()})\
-# {{{params['const_name'].capitalize()}={params['const_value']},\
-# W={params['Width']},\
-# L={params['Len']},\
-# T={params['Temp']}}}'''
-
-#     f.write(curve_msg)
-#     f.write("\n")
-    
-#     # 遍历num_curves条曲线
-#     for i in range(num_curves):
-#         z_now = round((z_start + z_step * i), 1)
-#         msg = f"curve {{ {z_now} }}\n"
-#         f.write(msg)
-#         for j in range(len(curves[i])):
-#             x_val = curves[i].iloc[j, 0]
-#             format_x = "{:.2f}".format(x_val)
-#             y_val = curves[i].iloc[j, 1]
-#             format_y = "{:.3e}".format(y_val)
-#             msg = f"{format_x}			{format_y}\n"
-#             f.write(msg)
-
-
-#     f.close()
 
 
 if __name__ == '__main__':
