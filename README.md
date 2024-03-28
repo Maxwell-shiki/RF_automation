@@ -345,3 +345,8 @@
 ---
 - 整理仪器说明书
 - `TEST/1_MOS_modeling` .mea文件处理 脚本编辑
+
+2024.3.28
+---
+- 带贾云鹏来国创
+- 写FPGA，学Cadence virtuoso
