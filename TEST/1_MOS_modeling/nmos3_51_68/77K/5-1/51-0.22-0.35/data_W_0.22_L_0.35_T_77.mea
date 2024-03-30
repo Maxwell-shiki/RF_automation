@@ -1,6 +1,6 @@
 condition{date=3/24/24,instrument=pseudo.meter,mode=forward,type=nmos}
 
-Page (name=Id_Vd_Vgs,x=Vd,p=Vgs,y=Id){Vbs=-3.3,W=0.22,L=0.35,T=77}
+Page (name=Ids_Vds_Vgs,x=Vds,p=Vgs,y=Ids){Vbs=-3.3,W=0.22,L=0.35,T=77}
 curve { 0.3 }
 0.00			5.500e-13
 0.01			1.000e-12
@@ -1993,7 +1993,7 @@ curve { 3.3 }
 3.28			1.267e-04
 3.29			1.267e-04
 3.30			1.267e-04
-Page (name=Id_Vd_Vgs,x=Vd,p=Vgs,y=Id){Vbs=0,W=0.22,L=0.35,T=77}
+Page (name=Ids_Vds_Vgs,x=Vds,p=Vgs,y=Ids){Vbs=0,W=0.22,L=0.35,T=77}
 curve { 0.3 }
 0.00			9.000e-14
 0.01			-4.700e-13
@@ -3986,7 +3986,7 @@ curve { 3.3 }
 3.28			1.764e-04
 3.29			1.764e-04
 3.30			1.764e-04
-Page (name=Id_Vg_Vbs,x=Vg,p=Vbs,y=Id){Vds=0.05,W=0.22,L=0.35,T=77}
+Page (name=Ids_Vgs_Vbs,x=Vgs,p=Vbs,y=Ids){Vds=0.05,W=0.22,L=0.35,T=77}
 curve { 0.0 }
 -0.50			-3.600e-13
 -0.49			1.310e-12
@@ -6661,7 +6661,7 @@ curve { -3.6 }
 3.28			1.199e-05
 3.29			1.202e-05
 3.30			1.205e-05
-Page (name=Id_Vg_Vbs,x=Vg,p=Vbs,y=Id){Vds=3.3,W=0.22,L=0.35,T=77}
+Page (name=Ids_Vgs_Vbs,x=Vgs,p=Vbs,y=Ids){Vds=3.3,W=0.22,L=0.35,T=77}
 curve { 0.0 }
 -0.50			1.510e-12
 -0.49			1.020e-12
@@ -9336,7 +9336,7 @@ curve { -3.6 }
 3.28			1.256e-04
 3.29			1.265e-04
 3.30			1.273e-04
-Page (name=Isub_Vg_Vds,x=Vg,p=Vds,y=Isub){Vbs=0,W=0.22,L=0.35,T=77}
+Page (name=Isub_Vgs_Vds,x=Vgs,p=Vds,y=Isub){Vbs=0,W=0.22,L=0.35,T=77}
 curve { 0.3 }
 0.00			-7.300e-13
 0.01			-6.330e-12

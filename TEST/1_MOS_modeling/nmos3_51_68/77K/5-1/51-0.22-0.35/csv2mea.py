@@ -72,6 +72,18 @@ def getParam_csv(filename):
     else:
         print(f"Invalid filename format: {filename}")
 
+def modify_param(param):
+    if param == "id":
+        return "ids"
+    if param == "ig":
+        return "igs"
+    if param == "vd":
+        return "vds"
+    if param == "vg":
+        return "vgs"
+    else:
+        return param
+
 def main():
     csvfilelist = getFilelist_csv('.')
     csvfile_tmp = csvfilelist[0]
@@ -89,6 +101,8 @@ def main():
         curves = getCurves_csv(csvfile)
         num_curves = len(curves)
         params = getParam_csv(csvfile)
+        for param in params:
+            params[param] = modify_param(params[param])
         z_start, z_cnt, z_step = getZAxisVal_csv(csvfile)
         curve_msg = f'''Page (name=\
 {params['y_name'].capitalize()}_{params['x_name'].capitalize()}_{params['z_name'].capitalize()},\
