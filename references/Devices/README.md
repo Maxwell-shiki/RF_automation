@@ -109,7 +109,8 @@
 
 红外测试平台
 ---
-- [Cotest VCSEL 测试系统](https://www.cotest.com.cn/ziliaoxiazai2), 资料暂未下载
+- ~~[Cotest VCSEL 测试系统](https://www.cotest.com.cn/ziliaoxiazai2), 资料暂未下载~~
+- 激光雷达窄脉冲NIV测试系统
 
 脉冲发生器
 ---
