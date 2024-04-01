@@ -350,3 +350,8 @@
 ---
 - 带贾云鹏来国创
 - 写FPGA，学Cadence virtuoso
+
+2024.4.1
+----
+- 准备买的一套[FPGA板子及套件](https://detail.tmall.com/item.htm?abbucket=8&id=701690920920&ns=1&skuId=4953405272535&spm=a21n57.1.0.0.6e1e523cG0MIBn), 准备做一些数据处理和算法，可供贾云鹏参考
+- 设备清点
