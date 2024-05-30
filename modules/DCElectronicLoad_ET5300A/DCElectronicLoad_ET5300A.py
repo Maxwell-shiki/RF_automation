@@ -27,9 +27,11 @@ class DCElectronicLoad_ET5300A:
 
     def applyload(self, stat):
         if stat == 'ON' or stat == '1':
+            time.sleep(1)
             self.write('CH:SW ON')
         elif stat == 'OFF' or stat == '0':
             self.write('CH:SW OFF')
+            time.sleep(1)
         else:
             print('Invalid command!')
         time.sleep(1)
@@ -46,5 +48,17 @@ class DCElectronicLoad_ET5300A:
         self.write('VOLT:CV ' + str(voltage))
         time.sleep(1)
 
+    def constCur2Vol(self, current, voltage):
+        self.write('CH:MODE CCCV')
+        time.sleep(1)
+        self.write('CURR:CCCV ' + str(current))
+        time.sleep(1)
+        self.write('VOLT:CCCV ' + str(voltage))
+        time.sleep(1)
+
+    
+
+    
 
 # 还需要写一个切换量程的，见手册2.3.1
+# 还需要写保护功能，见pdf 2.13

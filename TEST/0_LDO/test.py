@@ -29,13 +29,18 @@ from DCElectronicLoad_ET5300A import DCElectronicLoad_ET5300A
 
 
 def main():
-    comload = DCElectronicLoad_ET5300A('COM8')
+    comload = DCElectronicLoad_ET5300A('COM3')
 
     # comload.constCurrent(1.25)
+    # comload.constVoltage(9.2)
+    # comload.constCur2Vol(0.82, 7.2)
     # comload.applyload('ON')
 
-    # comload.constVoltage(9.2)
-    # comload.applyload('ON')
+    Imax = comload.query('CURR:IMAX?')
+    print(Imax)
+    comload.write('CURR:IMAX 1.81')
+    Imax = comload.query('CURR:IMAX?')
+    print(Imax)
 
 
 
