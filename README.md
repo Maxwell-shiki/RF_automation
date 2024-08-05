@@ -410,3 +410,8 @@
 ----
 - 准备跑路，把VPN之类的账号要先删了(bushi
 - 开实习证明，然后问下六月份咋算
+
+2024.7.25
+----
+- 关于PSRR测试的示波器方案，油管有官方演示 [Measuring Power Supply Rejection Ratio (PSSR)](https://www.youtube.com/watch?v=8i8Pb3wY7xo)
+- 我觉得我的精度低主要还是得到示波器Vpp的方式太粗暴了点，再换个试试

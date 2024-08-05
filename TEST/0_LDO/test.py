@@ -48,6 +48,9 @@ def main():
     MSO_resource_name = "USB0::0x0699::0x0530::C051431::0::INSTR"
     MSO = Oscilloscope_MSO64B(MSO_resource_name)
 
+    # 需要补充一些示波器的自动化功能
+    # 一个是获取某个通道的Measurement中的某个参数
+    # 一个是示波器某个通道的函数波形提取
 
     
 
