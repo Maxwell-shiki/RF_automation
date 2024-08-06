@@ -1,4 +1,4 @@
-import pyvisa as visa
+# import pyvisa as visa
 import re
 import time
 import serial
