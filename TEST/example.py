@@ -32,8 +32,8 @@ def main():
     # DCPS = DCPowerSupply_ES3631A(PS_resource_name)
     # # 默认启动时*RST
 
-    # DCPS.set_voltage(3.3, channel = 1)
-    # DCPS.set_current(0.5, channel = 1)
+    # DCPS.set_voltage(4.3, channel = 1)
+    # DCPS.set_current(0.55, channel = 1)
     # print("    Voltage output = ", DCPS.get_voltage(channel = 1), "V")
     # print("    Current output = ", DCPS.get_current(channel = 1), "A")
 
@@ -92,10 +92,10 @@ def main():
     # *************************************************************************************
 
     # **********************  功率计  *****************************************************
-    # MPM_resource_name = 'GPIB1::13::INSTR'
+    # MPM_resource_name = 'GPIB0::13::INSTR'
     # MPM = MicrowavePowerMeter_2438PA(MPM_resource_name)
     # # freq = MPM.get_freq()
-    # MPM.set_freq(32)
+    # MPM.set_freq(67)
     # power = MPM.get_power()
     # print("    Power = ", power, "dBm now.")
 
